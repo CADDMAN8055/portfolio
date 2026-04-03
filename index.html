@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Gajanan Sonwane | Pharmaceutical Research Scientist & AI Drug Discovery</title>
+    <meta name="description" content="Dr. Gajanan Sonwane - 10+ years in Computer-Aided Drug Design, 22+ publications, 5 NCE projects, Developer of ROS-OptiPath™ and MolDesign-Accelerator™">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #38bdf8;
+            --accent2: #818cf8;
+            --accent3: #34d399;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(129, 140, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(52, 211, 153, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-left { animation: fadeInUp 1s ease; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 17px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 42px;
+            font-weight: 800;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-right {
+            position: relative;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: var(--gradient-1);
+            border-radius: 30px;
+            opacity: 0.2;
+            filter: blur(60px);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            border: 2px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 12px 18px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            animation: floatBadge 3s ease-in-out infinite;
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-badge.github { top: 20px; right: -30px; animation-delay: 0s; }
+        .floating-badge.python { bottom: 40px; left: -30px; animation-delay: 0.5s; }
+        .floating-badge.ai { top: 50%; right: -40px; animation-delay: 1s; }
+
+        /* Section Styles */
+        section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Journey Timeline */
+        .journey {
+            background: var(--secondary);
+            padding: 100px 40px;
+            position: relative;
+        }
+
+        .journey::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3));
+            opacity: 0.3;
+        }
+
+        .journey-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            position: relative;
+        }
+
+        .journey-item {
+            position: relative;
+            padding: 30px;
+            background: var(--primary);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .journey-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .journey-item:nth-child(even) {
+            text-align: right;
+        }
+
+        .journey-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            top: 40px;
+        }
+
+        .journey-item:nth-child(odd)::before {
+            right: -50px;
+        }
+
+        .journey-item:nth-child(even)::before {
+            left: -50px;
+        }
+
+        .journey-year {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .journey-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .journey-company {
+            font-size: 14px;
+            color: var(--accent2);
+            margin-bottom: 12px;
+        }
+
+        .journey-description {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: var(--secondary);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+        }
+
+        .about-content h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .highlight-item::before {
+            content: '✓';
+            width: 20px;
+            height: 20px;
+            background: rgba(52, 211, 153, 0.2);
+            color: var(--accent3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--secondary);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .project-header {
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .project-stage {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .stage-discovery { background: rgba(56, 189, 248, 0.2); color: var(--accent); }
+        .stage-preclinical { background: rgba(129, 140, 248, 0.2); color: var(--accent2); }
+        .stage-phase1 { background: rgba(52, 211, 153, 0.2); color: var(--accent3); }
+
+        .project-body { padding: 25px; }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .project-target {
+            font-size: 13px;
+            color: var(--accent2);
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 4px 10px;
+            background: var(--primary);
+            border-radius: 6px;
+            color: var(--text-muted);
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tool-card {
+            background: var(--secondary);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .tool-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .tool-type {
+            font-size: 12px;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .tool-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .tool-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .tool-stat {
+            text-align: center;
+        }
+
+        .tool-stat-value {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent3);
+        }
+
+        .tool-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Publications Section */
+        .publications-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .publication-item:hover {
+            border-color: var(--accent);
+        }
+
+        .publication-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .publication-journal {
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .publication-year {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .skill-category-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category-title span {
+            font-size: 24px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            font-size: 13px;
+            padding: 8px 14px;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* GitHub Section */
+        .github-repos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .repo-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .repo-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .repo-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .repo-type {
+            font-size: 11px;
+            padding: 3px 8px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border-radius: 4px;
+        }
+
+        .repo-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .repo-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .repo-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            border-top: 1px solid var(--border);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-text a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-right { display: none; }
+            .hero-description { margin: 0 auto 40px; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; }
+            .journey-grid { grid-template-columns: 1fr; }
+            .journey-item:nth-child(even) { text-align: left; }
+            .journey-item::before { display: none; }
+            .skills-container { grid-template-columns: 1fr; }
+            .contact-info { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
+            .hero-title { font-size: 36px; }
+            .hero-subtitle { font-size: 18px; }
+            .section-title { font-size: 32px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .about-highlights { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🧬</div>
+                Dr. Gajanan Sonwane
+            </a>
+            <ul class="nav-links">
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#tools">AI Tools</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#github">GitHub</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 1s;"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span>Available for collaborations</span>
+                </div>
+                <h1 class="hero-title">
+                    Dr. Gajanan M. Sonwane<br>
+                    <span class="gradient-text">PhD, Pharmaceutical Sciences</span>
+                </h1>
+                <p class="hero-subtitle">Research Scientist & AI Drug Discovery Expert</p>
+                <p class="hero-description">
+                    10+ years pioneering computer-aided drug design, medicinal chemistry synthesis, 
+                    and AI-driven drug discovery. Leading 5 NCE projects from target to preclinical. 
+                    Developer of proprietary AI tools achieving 60% reduction in time-to-candidate.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">10+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">22+</div>
+                        <div class="stat-label">Publications</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">NCE Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">Patents</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">📬 Get In Touch</a>
+                    <a href="#projects" class="btn btn-secondary">🔬 View Projects</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-image-container">
+                    <div class="hero-image-bg"></div>
+                    <div class="hero-image">👨‍🔬</div>
+                    <div class="floating-badge github">
+                        <span>📦</span>
+                        <span>github.com/CADDMAN8055</span>
+                    </div>
+                    <div class="floating-badge python">
+                        <span>🐍</span>
+                        <span>Python • RDKit • TensorFlow</span>
+                    </div>
+                    <div class="floating-badge ai">
+                        <span>🤖</span>
+                        <span>AI Drug Discovery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="journey">
+        <div class="section-header">
+            <span class="section-badge">My Story</span>
+            <h2 class="section-title">The Journey</h2>
+            <p class="section-description">From a curious student to pioneering drug discovery researcher</p>
+        </div>
+        <div class="journey-grid">
+            <div class="journey-item">
+                <div class="journey-year">2014 - 2019</div>
+                <div class="journey-title">Ph.D. Research Fellow</div>
+                <div class="journey-company">Dr. Babasaheb Ambedkar Marathwada University</div>
+                <div class="journey-description">
+                    Designed and synthesized 39 novel 2-phenazinamine derivatives as anticancer agents 
+                    against chronic myelogenous leukemia (CML). Compounds showed activity comparable to Imatinib.
+                </div>
+            </div>
+            <div class="journey-item">
+                <div class="journey-year">2018 - 2021</div>
+                <div class="journey-title">Assistant Professor</div>
+                <div class="journey-company">Rajarshi Shahu College of Pharmacy</div>
+                <div class="journey-description">
+                    Conducted research on heterocyclic compound synthesis. Published 8 research articles 
+                    and mentored students on synthesis techniques and spectral interpretation.
+                </div>
+            </div>
+            <div class="journey-item">
+                <div class="journey-year">2021 - 2024</div>
+                <div class="journey-title">Associate Professor</div>
+                <div class="journey-company">Rajesh Bhaiyya Tople College of B.Pharmacy</div>
+                <div class="journey-description">
+                    Developed curriculum for 200+ students. Secured AICTE MODROB grant of ₹8,16,000 
+                    for laboratory modernization. Supervised 15+ student research projects.
+                </div>
+            </div>
+            <div class="journey-item">
+                <div class="journey-year">2024 - Present</div>
+                <div class="journey-title">Research Scientist</div>
+                <div class="journey-company">Morepen Proprietary Drug Research Pvt. Ltd.</div>
+                <div class="journey-description">
+                    Leading computational and synthetic medicinal chemistry for 5 NCE projects. 
+                    Developed integrated AI/ML workflows achieving 60% reduction in time-to-candidate.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-badge">About Me</span>
+            <h2 class="section-title">Bridging Chemistry & AI</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">🧪</div>
+            <div class="about-content">
+                <h3>From Lab Coats to Machine Learning</h3>
+                <p>
+                    My journey began at the bench, synthesizing complex heterocyclic compounds by hand. 
+                    But I saw the future — AI transforming drug discovery. So I learned to code.
+                </p>
+                <p>
+                    Today, I merge traditional medicinal chemistry expertise with cutting-edge AI tools. 
+                    My ROS-OptiPath™ and MolDesign-Accelerator™ are being used to accelerate the discovery 
+                    of life-saving drugs.
+                </p>
+                <p>
+                    I've published 22+ peer-reviewed papers, filed patents, and most importantly — 
+                    I've helped move 5 new chemical entities closer to helping patients.
+                </p>
+                <div class="about-highlights">
+                    <div class="highlight-item">Computer-Aided Drug Design (CADD)</div>
+                    <div class="highlight-item">AI/ML Virtual Screening</div>
+                    <div class="highlight-item">Multi-step Organic Synthesis</div>
+                    <div class="highlight-item">QSAR/GQSAR Modeling</div>
+                    <div class="highlight-item">Molecular Dynamics Simulations</div>
+                    <div class="highlight-item">Drug Discovery Pipeline Leadership</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-badge">Drug Pipeline</span>
+            <h2 class="section-title">Active Research Projects</h2>
+            <p class="section-description">5 NCE projects spanning oncology, metabolic disorders, and antivirals</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-id">T1/MPDR000040</span>
+                    <span class="project-stage stage-phase1">Early Phase I</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">T1 - Anticancer Agent</h3>
+                    <p class="project-target">🎯 Oncology - Transcriptional Factor | IC50: 1.4nM</p>
+                    <p class="project-description">
+                        Novel transcriptional factor inhibitor with exceptional potency. 
+                        Demonstrated efficacy in multiple cancer cell lines. Moving toward IND filing.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">SBDD</span>
+                        <span class="tag">FEP+</span>
+                        <span class="tag">Lead Optimization</span>
+                        <span class="tag">Oncology</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-id">P1/MPDR000033</span>
+                    <span class="project-stage stage-preclinical">Preclinical</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">P1 - GPCR Modulator</h3>
+                    <p class="project-target">🎯 Oncology - GPCR Target</p>
+                    <p class="project-description">
+                        G-protein coupled receptor modulator for solid tumors. 
+                        Optimized for selectivity and oral bioavailability.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">GPCR</span>
+                        <span class="tag">MMGBSA</span>
+                        <span class="tag">ADMET</span>
+                        <span class="tag">Lead Opt</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-id">GP1/MPDR0033</span>
+                    <span class="project-stage stage-discovery">Discovery</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">GP1 - Diabetes T2 Target</h3>
+                    <p class="project-target">🎯 Diabetes Type 2 - GPCR</p>
+                    <p class="project-description">
+                        Novel GPCR modulator for Type 2 diabetes. 
+                        Targeting incretin receptors for improved glucose control.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Metabolic</span>
+                        <span class="tag">GPCR</span>
+                        <span class="tag">Virtual Screening</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-id">S1/MPDR0063</span>
+                    <span class="project-stage stage-discovery">Discovery</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">S1 - Metabolic Disorders</h3>
+                    <p class="project-target">🎯 Metabolic Disorders - GPCR</p>
+                    <p class="project-description">
+                        Next-generation GPCR modulator for metabolic syndrome. 
+                        Combined efficacy for obesity and dyslipidemia.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Obesity</span>
+                        <span class="tag">Lipid Modulation</span>
+                        <span class="tag">SAR</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-id">M1/MPDR0073</span>
+                    <span class="project-stage stage-phase1">Early Phase I</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">M1 - Enzyme Inhibitor</h3>
+                    <p class="project-target">🎯 Diabetes - Enzyme Target</p>
+                    <p class="project-description">
+                        Novel enzyme inhibitor with dual mechanism. 
+                        Achieved excellent selectivity over off-targets.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Enzyme</span>
+                        <span class="tag">Selectivity</span>
+                        <span class="tag">PK/PD</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-id">ADR1/MPDR0104</span>
+                    <span class="project-stage stage-discovery">Discovery</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">ADR1 - Dengue Antiviral</h3>
+                    <p class="project-target">🎯 Antiviral - Drug Repurposing</p>
+                    <p class="project-description">
+                        Repurposing strategy for dengue fever treatment. 
+                        Using AI to identify novel mechanisms.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Antiviral</span>
+                        <span class="tag">Repurposing</span>
+                        <span class="tag">AI Screening</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Tools Section -->
+    <section id="tools">
+        <div class="section-header">
+            <span class="section-badge">Proprietary Technology</span>
+            <h2 class="section-title">AI-Powered Drug Discovery Tools</h2>
+            <p class="section-description">Proprietary tools I've developed achieving 60% time reduction</p>
+        </div>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">🧬</div>
+                <h3 class="tool-name">ROS-OptiPath™</h3>
+                <span class="tool-type">Route of Synthesis AI</span>
+                <p class="tool-description">
+                    AI-powered retrosynthetic analysis tool that designs optimal synthesis routes. 
+                    Considers cost, yield, and available reagents.
+                </p>
+                <div class="tool-stats">
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">35%</div>
+                        <div class="tool-stat-label">Cost Reduction</div>
+                    </div>
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">4-6</div>
+                        <div class="tool-stat-label">Weeks Saved</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">⚡</div>
+                <h3 class="tool-name">MolDesign-Accelerator™</h3>
+                <span class="tool-type">Generative AI Platform</span>
+                <p class="tool-description">
+                    Integrated molecule design platform combining generative AI, scaffold hopping, 
+                    R-group enumeration, and real-time ADMET filtering.
+                </p>
+                <div class="tool-stats">
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">50%</div>
+                        <div class="tool-stat-label">Faster Hit-to-Lead</div>
+                    </div>
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">40%</div>
+                        <div class="tool-stat-label">Hit Rate Improvement</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">🔬</div>
+                <h3 class="tool-name">ChemPredict</h3>
+                <span class="tool-type">Property Prediction</span>
+                <p class="tool-description">
+                    ML-based prediction of molecular properties including solubility, 
+                    permeability, and metabolic stability.
+                </p>
+                <div class="tool-stats">
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">85%</div>
+                        <div class="tool-stat-label">Accuracy</div>
+                    </div>
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">ADMET</div>
+                        <div class="tool-stat-label">Full Suite</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">⚗️</div>
+                <h3 class="tool-name">Reaction Oracle</h3>
+                <span class="tool-type">Retrosynthesis Engine</span>
+                <p class="tool-description">
+                    Advanced retrosynthetic planning with 85% route prediction accuracy. 
+                    Supports 100+ named reactions.
+                </p>
+                <div class="tool-stats">
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">85%</div>
+                        <div class="tool-stat-label">Route Accuracy</div>
+                    </div>
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">100+</div>
+                        <div class="tool-stat-label">Reactions</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">💧</div>
+                <h3 class="tool-name">SoluPredict</h3>
+                <span class="tool-type">Solubility Prediction</span>
+                <p class="tool-description">
+                    Deep learning model for aqueous solubility prediction. 
+                    Critical for formulation development.
+                </p>
+                <div class="tool-stats">
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">90%</div>
+                        <div class="tool-stat-label">Correlation</div>
+                    </div>
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">LogS</div>
+                        <div class="tool-stat-label">Output</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">⚠️</div>
+                <h3 class="tool-name">MPDR_ToxSight</h3>
+                <span class="tool-type">Toxicity Prediction</span>
+                <p class="tool-description">
+                    Comprehensive toxicity prediction including hERG, Ames test, 
+                    DILI, and eco-toxicity.
+                </p>
+                <div class="tool-stats">
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">92%</div>
+                        <div class="tool-stat-label">Sensitivity</div>
+                    </div>
+                    <div class="tool-stat">
+                        <div class="tool-stat-value">Multi</div>
+                        <div class="tool-stat-label">Tox Endpoints</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <span class="section-badge">Technical Arsenal</span>
+            <h2 class="section-title">Skills & Technologies</h2>
+        </div>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3 class="skill-category-title"><span>🧬</span> Drug Design</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">CADD</span>
+                    <span class="skill-tag">SBDD</span>
+                    <span class="skill-tag">LBDD</span>
+                    <span class="skill-tag">Pharmacophore</span>
+                    <span class="skill-tag">Virtual Screening</span>
+                    <span class="skill-tag">QSAR/GQSAR</span>
+                    <span class="skill-tag">Molecular Docking</span>
+                    <span class="skill-tag">FEP+</span>
+                    <span class="skill-tag">MMGBSA</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title"><span>⚗️</span> Computational MD</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">GROMACS</span>
+                    <span class="skill-tag">AMBER</span>
+                    <span class="skill-tag">Desmond</span>
+                    <span class="skill-tag">QM-MM</span>
+                    <span class="skill-tag">DFT</span>
+                    <span class="skill-tag">Gaussian</span>
+                    <span class="skill-tag">VMD</span>
+                    <span class="skill-tag">100ns+ MD</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title"><span>🖥️</span> Software</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Schrödinger Suite</span>
+                    <span class="skill-tag">AutoDock Vina</span>
+                    <span class="skill-tag">MOE</span>
+                    <span class="skill-tag">PyMOL</span>
+                    <span class="skill-tag">Chimera</span>
+                    <span class="skill-tag">Discovery Studio</span>
+                    <span class="skill-tag">Maestro</span>
+                    <span class="skill-tag">KNIME</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title"><span>🤖</span> AI & ML</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-Learn</span>
+                    <span class="skill-tag">Random Forest</span>
+                    <span class="skill-tag">SVM</span>
+                    <span class="skill-tag">Neural Networks</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">RDKit</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title"><span>🧪</span> Synthesis</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Multi-step (5-12)</span>
+                    <span class="skill-tag">Suzuki-Miyaura</span>
+                    <span class="skill-tag">Buchwald-Hartwig</span>
+                    <span class="skill-tag">Click Chemistry</span>
+                    <span class="skill-tag">Mitsunobu</span>
+                    <span class="skill-tag">Scale-up</span>
+                    <span class="skill-tag">Process Opt</span>
+                    <span class="skill-tag">Retrosynthesis</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title"><span>📊</span> Analytics</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">NMR</span>
+                    <span class="skill-tag">IR</span>
+                    <span class="skill-tag">HRMS</span>
+                    <span class="skill-tag">HPLC</span>
+                    <span class="skill-tag">LC-MS</span>
+                    <span class="skill-tag">Chromatography</span>
+                    <span class="skill-tag">ADMET</span>
+                    <span class="skill-tag">PK/PD</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github">
+        <div class="section-header">
+            <span class="section-badge">Open Source</span>
+            <h2 class="section-title">GitHub Projects</h2>
+            <p class="section-description">Tools and code I'm sharing with the community</p>
+        </div>
+        <div class="github-repos">
+            <a href="https://github.com/CADDMAN8055/java-drug-discovery" class="repo-card" target="_blank">
+                <div class="repo-header">
+                    <span class="repo-name">java-drug-discovery</span>
+                    <span class="repo-type">Java</span>
+                </div>
+                <p class="repo-description">
+                    Comprehensive Java-based drug discovery platform with CDK integration, 
+                    molecular descriptors, and QSAR modeling tools.
+                </p>
+                <div class="repo-stats">
+                    <span class="repo-stat">⭐ Stars</span>
+                    <span class="repo-stat">🍴 Forks</span>
+                    <span class="repo-stat">📦 CDK</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/CADDMAN8055/drug-design-platform" class="repo-card" target="_blank">
+                <div class="repo-header">
+                    <span class="repo-name">drug-design-platform</span>
+                    <span class="repo-type">Java/Vaadin</span>
+                </div>
+                <p class="repo-description">
+                    DrugCompass - Full-stack drug design platform with molecular docking, 
+                    dynamics, ADMET prediction, and AI tools.
+                </p>
+                <div class="repo-stats">
+                    <span class="repo-stat">⭐ Stars</span>
+                    <span class="repo-stat">🍴 Forks</span>
+                    <span class="repo-stat">🌐 Web</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/CADDMAN8055/computational-drug-tools" class="repo-card" target="_blank">
+                <div class="repo-header">
+                    <span class="repo-name">computational-drug-tools</span>
+                    <span class="repo-type">Python</span>
+                </div>
+                <p class="repo-description">
+                    Collection of computational drug discovery tools including 
+                    molecular fingerprints, similarity search, and property prediction.
+                </p>
+                <div class="repo-stats">
+                    <span class="repo-stat">⭐ Stars</span>
+                    <span class="repo-stat">🍴 Forks</span>
+                    <span class="repo-stat">🐍 RDKit</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/CADDMAN8055/rdkit_descriptors" class="repo-card" target="_blank">
+                <div class="repo-header">
+                    <span class="repo-name">rdkit_descriptors</span>
+                    <span class="repo-type">Python</span>
+                </div>
+                <p class="repo-description">
+                    RDKit-based molecular descriptor calculation and analysis toolkit. 
+                    Calculates 200+ molecular descriptors for QSAR.
+                </p>
+                <div class="repo-stats">
+                    <span class="repo-stat">⭐ Stars</span>
+                    <span class="repo-stat">🍴 Forks</span>
+                    <span class="repo-stat">🧬 RDKit</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/CADDMAN8055/retrosynthesis_tool" class="repo-card" target="_blank">
+                <div class="repo-header">
+                    <span class="repo-name">retrosynthesis_tool</span>
+                    <span class="repo-type">Python/AI</span>
+                </div>
+                <p class="repo-description">
+                    AI-powered retrosynthetic analysis tool implementing 
+                    modern machine learning approaches for reaction prediction.
+                </p>
+                <div class="repo-stats">
+                    <span class="repo-stat">⭐ Stars</span>
+                    <span class="repo-stat">🍴 Forks</span>
+                    <span class="repo-stat">🤖 AI</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/CADDMAN8055/scifinder_clone" class="repo-card" target="_blank">
+                <div class="repo-header">
+                    <span class="repo-name">scifinder_clone</span>
+                    <span class="repo-type">Web App</span>
+                </div>
+                <p class="repo-description">
+                    SciFinder-inspired chemistry search application with 
+                    reaction searching and property lookup capabilities.
+                </p>
+                <div class="repo-stats">
+                    <span class="repo-stat">⭐ Stars</span>
+                    <span class="repo-stat">🍴 Forks</span>
+                    <span class="repo-stat">🔍 Search</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="section-header">
+            <span class="section-badge">Research</span>
+            <h2 class="section-title">Publications & Patents</h2>
+            <p class="section-description">22+ peer-reviewed publications in medicinal chemistry and drug design</p>
+        </div>
+        <div class="publications-list">
+            <div class="publication-item">
+                <h3 class="publication-title">Synthesis and Docking of New Triazole-Thiazol-2-amine Derivatives as Antimicrobial Agents</h3>
+                <p class="publication-journal">Journal of Molecular Sciences, 2024</p>
+                <p class="publication-year">Sonwane G. et al.</p>
+            </div>
+            <div class="publication-item">
+                <h3 class="publication-title">Design, Synthesis and Anticancer Evaluation of Novel 2-Phenazinamine Derivatives Against CML</h3>
+                <p class="publication-journal">Bioorganic & Medicinal Chemistry, 2023</p>
+                <p class="publication-year">Sonwane G. et al. — Featured compound showed 1.2nM IC50 vs Imatinib reference</p>
+            </div>
+            <div class="publication-item">
+                <h3 class="publication-title">GQSAR and Molecular Modeling Studies of Heterocyclic Derivatives as Anti-inflammatory Agents</h3>
+                <p class="publication-journal">Journal of Enzyme Inhibition, 2022</p>
+                <p class="publication-year">Sonwane G. et al.</p>
+            </div>
+            <div class="publication-item">
+                <h3 class="publication-title">Synthesis of 2,5-disubstituted-1,3,4-thiadiazole Derivatives: Antimicrobial Evaluation</h3>
+                <p class="publication-journal">Taylor & Francis, 2020</p>
+                <p class="publication-year">Sonwane G. et al.</p>
+            </div>
+            <div class="publication-item">
+                <h3 class="publication-title">Novel Synthetic Preparation of New 2-Phenazinamines and Their Medicinal Use</h3>
+                <p class="publication-journal">Patent IN 201721041955 A — Filed December 2017</p>
+                <p class="publication-year">Sonwane G. et al. — Anticancer applications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <span class="section-badge">Let's Connect</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-description">Open to collaborations, consulting, and research opportunities</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:gajanansonwane63@gmail.com">gajanansonwane63@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">+91 8055032265</div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value">Hyderabad, India</div>
+                </div>
+            </div>
+            <div class="hero-buttons" style="margin-top: 50px; justify-content: center;">
+                <a href="https://github.com/CADDMAN8055" class="btn btn-primary" target="_blank">🐙 GitHub</a>
+                <a href="https://linkedin.com/in/dr-gajanan-sonwane" class="btn btn-secondary" target="_blank">💼 LinkedIn</a>
+                <a href="mailto:gajanansonwane63@gmail.com" class="btn btn-secondary">📬 Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">
+            © 2026 Dr. Gajanan M. Sonwane | Built with ❤️ and AI | 
+            <a href="https://github.com/CADDMAN8055" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+        });
+
+        // Simple mobile nav toggle
+        function toggleNav() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .tool-card, .journey-item, .publication-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
